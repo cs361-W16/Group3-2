@@ -17,7 +17,6 @@
 package controllers;
 
 import models.Game;
-import models.EnglishGame;
 import ninja.Context;
 import ninja.Result;
 import ninja.Results;
@@ -38,7 +37,7 @@ public class ApplicationController {
     }
     
     public Result gameGet(){
-        EnglishGame g = new EnglishGame();
+        Game g = new Game();
         g.buildDeck();
         g.shuffle();
         g.dealFour();

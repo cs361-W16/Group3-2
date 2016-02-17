@@ -17,14 +17,14 @@ public class testGame {
 
     @Test
     public void testGameBuildDeck(){
-        EnglishGame g = new EnglishGame();
+        Game g = new Game();
         g.buildDeck();
         assertEquals(52,g.deck.size());
     }
 
     @Test
     public void testGameInit(){
-        EnglishGame g = new EnglishGame();
+        Game g = new Game();
         g.buildDeck();
         g.shuffle();
         assertNotEquals(2,g.deck.get(0).getValue());
@@ -32,7 +32,7 @@ public class testGame {
 
     @Test
     public void testGameStart(){
-        EnglishGame g = new EnglishGame();
+        Game g = new Game();
         g.buildDeck();
         g.shuffle();
         g.dealFour();
@@ -44,7 +44,7 @@ public class testGame {
 
     @Test
     public void testCustomDeal(){
-        EnglishGame g = new EnglishGame();
+        Game g = new Game();
         g.buildDeck();
         g.customDeal(0,3,6,9);
         assertEquals("2Clubs",g.cols.get(0).get(0).toString());
@@ -55,11 +55,13 @@ public class testGame {
 
     @Test
     public void testRemoveFunction(){
-        EnglishGame g = new EnglishGame();
+        Game g = new Game();
         g.buildDeck();
         g.customDeal(0,3,6,9);
         g.remove(2);
         assertEquals(0,g.cols.get(2).size());
     }
+
+
 
 }

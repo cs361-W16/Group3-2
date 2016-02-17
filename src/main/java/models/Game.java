@@ -10,8 +10,11 @@ import java.util.Random;
 public class Game {
 
     public boolean error;
+
     public java.util.List<Card> deck = new ArrayList<>();
+
     public java.util.List<java.util.List<Card>> cols = new ArrayList<>();
+
 
     public Game(){
         cols.add(new ArrayList<Card>());
@@ -21,9 +24,16 @@ public class Game {
         error = false;
     }
 
-    //
-    // buildDeck() will need to be implemented seperately on each subclass
-    //
+
+    public void buildDeck() {
+        for(int i = 2; i < 15; i++){
+            deck.add(new Card(i,Suit.Clubs));
+            deck.add(new Card(i,Suit.Hearts));
+            deck.add(new Card(i,Suit.Diamonds));
+            deck.add(new Card(i,Suit.Spades));
+        }
+    }
+
 
     public void shuffle() {
         long seed = System.nanoTime();
@@ -85,6 +95,7 @@ public class Game {
     private Card getTopCard(int columnNumber) {
         return this.cols.get(columnNumber).get(this.cols.get(columnNumber).size()-1);
     }
+
 
     public void move(int colFrom, int colTo) {
         Card cardToMove = getTopCard(colFrom);
