@@ -1,0 +1,9 @@
+diff a/src/main/java/controllers/ApplicationController.java b/src/main/java/controllers/ApplicationController.java	(rejected hunks)
+@@ -17,6 +17,7 @@
+ package controllers;
+ 
+ import models.Game;
++import models.EnglishGame;
+ import ninja.Context;
+ import ninja.Result;
+ import ninja.Results;
