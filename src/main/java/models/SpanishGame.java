@@ -7,24 +7,39 @@ import java.util.ArrayList;
  */
 public class SpanishGame extends Game {
 
-    /*public void buildDeck() {
-        for(int i = 1; i < 14; i++){
-            if (i < 8 || i > 10) {
-                deck.add(new Card(i, SpanishSuit.Clubs));
-                deck.add(new Card(i, SpanishSuit.Coins));
-                deck.add(new Card(i, SpanishSuit.Swords));
-                deck.add(new Card(i, SpanishSuit.Cups));
-            }
-        }
-    }*/
-
     public void buildDeck() {
         for(int i = 1; i < 14; i++){
             if (i < 8 || i > 10) {
-                deck.add(new Card(i, Suit.Clubs));
-                deck.add(new Card(i, Suit.Hearts));
-                deck.add(new Card(i, Suit.Diamonds));
-                deck.add(new Card(i, Suit.Spades));
+                deck.add(new Card(i,null, SpanishSuit.Clubs));
+                deck.add(new Card(i,null, SpanishSuit.Coins));
+                deck.add(new Card(i,null, SpanishSuit.Swords));
+                deck.add(new Card(i,null, SpanishSuit.Cups));
+            }
+        }
+    }
+
+    public void remove(int columnNumber) {
+        if(colHasCards(columnNumber)) {
+            Card c = getTopCard(columnNumber);
+            boolean removeCard = false;
+            for (int i = 0; i < 4; i++) {
+                if (i != columnNumber) {
+                    if (colHasCards(i)) {
+                        Card compare = getTopCard(i);
+                        if (compare.getSpanishSuit() == c.getSpanishSuit()) {
+                            if (compare.getValue() > c.getValue()) {
+                                removeCard = true;
+                            }
+                        }
+                    }
+                }
+            }
+            if (removeCard) {
+                this.cols.get(columnNumber).remove(this.cols.get(columnNumber).size() - 1);
+                error = false;
+            }
+            else{
+                error = true;
             }
         }
     }
