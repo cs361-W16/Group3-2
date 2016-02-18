@@ -36,4 +36,5 @@ public class Card implements Serializable {
     public String toString() {
         return this.value + this.suit.toString();
     }
+
 }
