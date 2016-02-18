@@ -17,6 +17,8 @@
 package controllers;
 
 import models.Game;
+import models.EnglishGame;
+import models.SpanishGame;
 import ninja.Context;
 import ninja.Result;
 import ninja.Results;
@@ -32,12 +34,30 @@ public class ApplicationController {
         return Results.html();
     }
 
-    public Result acesUp() {
-        return Results.html().template("views/AcesUp/AcesUp.flt.html");
+    public Result start() {
+        return Results.html().template("views/AcesUp/AcesUpStartScreen.html");
+    }
+
+    public Result engAcesUp() {
+        return Results.html().template("views/AcesUp/EngAcesUp.flt.html");
+    }
+
+    public Result spanAcesUp() {
+        return Results.html().template("views/AcesUp/SpanAcesUp.html");
     }
     
-    public Result gameGet(){
-        Game g = new Game();
+    public Result englishGameGet(){
+        EnglishGame g = new EnglishGame();
+        g.buildDeck();
+        g.shuffle();
+        g.dealFour();
+        g.error = false;
+
+        return Results.json().render(g);
+    }
+
+    public Result spanishGameGet(){
+        SpanishGame g = new SpanishGame();
         g.buildDeck();
         g.shuffle();
         g.dealFour();

@@ -52,40 +52,16 @@ public abstract class Game {
         deck.remove(c4);
     }
 
-    public void remove(int columnNumber) {
-        if(colHasCards(columnNumber)) {
-            Card c = getTopCard(columnNumber);
-            boolean removeCard = false;
-            for (int i = 0; i < 4; i++) {
-                if (i != columnNumber) {
-                    if (colHasCards(i)) {
-                        Card compare = getTopCard(i);
-                        if (compare.getSuit() == c.getSuit()) {
-                            if (compare.getValue() > c.getValue()) {
-                                removeCard = true;
-                            }
-                        }
-                    }
-                }
-            }
-            if (removeCard) {
-                this.cols.get(columnNumber).remove(this.cols.get(columnNumber).size() - 1);
-                error = false;
-            }
-            else{
-                error = true;
-            }
-        }
-    }
+    public abstract void remove(int columnNumber);
 
-    private boolean colHasCards(int colNumber) {
+    public boolean colHasCards(int colNumber) {
         if(this.cols.get(colNumber).size()>0){
             return true;
         }
         return false;
     }
 
-    private Card getTopCard(int columnNumber) {
+    public Card getTopCard(int columnNumber) {
         return this.cols.get(columnNumber).get(this.cols.get(columnNumber).size()-1);
     }
 
@@ -96,11 +72,11 @@ public abstract class Game {
         this.addCardToCol(colTo,cardToMove);
     }
 
-    private void addCardToCol(int colTo, Card cardToMove) {
+    public void addCardToCol(int colTo, Card cardToMove) {
         cols.get(colTo).add(cardToMove);
     }
 
-    private void removeCardFromCol(int colFrom) {
+    public void removeCardFromCol(int colFrom) {
         this.cols.get(colFrom).remove(this.cols.get(colFrom).size()-1);
 
         //I think that should conflict...

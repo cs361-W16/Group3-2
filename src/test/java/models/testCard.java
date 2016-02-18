@@ -10,19 +10,25 @@ import static org.junit.Assert.*;
 public class testCard {
     @Test
     public void testGetSuit(){
-        Card c = new Card(5,Suit.Clubs);
+        Card c = new Card(5,Suit.Clubs, null);
         assertEquals(Suit.Clubs,c.getSuit());
     }
 
     @Test
+    public void testSpanishGetSuit(){
+        Card c = new Card(5,null, SpanishSuit.Clubs);
+        assertEquals(SpanishSuit.Clubs,c.getSpanishSuit());
+    }
+
+    @Test
     public void testToString(){
-        Card c = new Card(5,Suit.Clubs);
+        Card c = new Card(5,Suit.Clubs, null);
         assertEquals("5Clubs",c.toString());
     }
 
     @Test
     public void testMoveCard(){
-        Game g = new Game();
+        Game g = new EnglishGame();
         g.buildDeck();
         g.customDeal(0,3,6,9);
         g.remove(2);
@@ -31,6 +37,4 @@ public class testCard {
         assertEquals(1,g.cols.get(2).size());
         assertEquals(0,g.cols.get(0).size());
     }
-
-
 }
