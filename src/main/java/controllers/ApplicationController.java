@@ -35,7 +35,7 @@ public class ApplicationController {
     }
 
     public Result acesUp() {
-        return Results.html().template("views/AcesUp/AcesUp.flt.html");
+        return Results.html().template("views/AcesUp/AcesUpStartScreen.html");
     }
     
     public Result englishGameGet(){
