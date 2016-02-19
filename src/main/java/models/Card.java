@@ -15,7 +15,7 @@ public class Card implements Serializable {
     public final SpanishSuit spanSuit;
 
     @JsonCreator
-    public Card(@JsonProperty("value") int value, @JsonProperty("suit") Suit suit, @JsonProperty("spanSuit") SpanishSuit spanSuit) {
+    public Card(@JsonProperty("value") int value, @JsonProperty("suit") Suit suit, @JsonProperty("spanishSuit") SpanishSuit spanSuit) {
         this.value = value;
         this.suit = suit;
         this.spanSuit = spanSuit;
