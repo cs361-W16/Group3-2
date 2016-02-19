@@ -228,7 +228,7 @@ game = data;
 $("#dealButton").click(function(){
 $.ajax({
   type: "POST",
-  url: "/dealGame",
+  url: "/dealSpanGame",
   data: JSON.stringify(game),
   success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
         game = data;
@@ -242,7 +242,7 @@ $.ajax({
 function removeCard(colNumber){
     $.ajax({
         type: "POST",
-        url: "/removeCard/"+colNumber,
+        url: "/removeSpanCard/"+colNumber,
         data: JSON.stringify(game),
         success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
         game = data;
@@ -272,7 +272,7 @@ var colFrom = $("#from_col").val();
 var colTo = $("#to_col").val();
 $.ajax({
   type: "POST",
-  url: "/moveCard/"+colFrom+"/"+colTo,
+  url: "/moveSpanCard/"+colFrom+"/"+colTo,
   data: JSON.stringify(game),
   success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
         game = data;
